@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 10; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1 {
+    color:red;
+    text-align: center;
+  }
+  
+  section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  
+  .bg-dark {
+    background-color: #343a40!important;
+  }
+  
+  .navbar-expand-sm {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+  }
+  .navbar-brand{
+		width: 100%; 
+		height: 50px; 
+		margin: 0;
+		z-index: 99; 
+        display: flex;
+        justify-content: right; 
+		background-color: #444444;
+        margin-right: 1rem;
+  }
+ 
+  #home{
+      margin-right: 60rem;
+  }
+        .navbar-brand li{
+        height: auto;
+        width: 135.8px; 
+        float: left;  
+        text-align: center; 
+        list-style: none;  
+        font: normal bold 13px/1em Arial, Verdana, Helvetica;  
+        padding: 0;
+        margin: 0;
+        background-color: #444444;
+        }
+        .navbar-brand a{							
+        padding: 18px 0;  
+        border-left: 1px solid #ccc9c9;
+        text-decoration: none; 
+        color: white; 
+        display: block;
+        }
+        .navbar-brand li:hover, a:hover {
+        background-color: #444444;
+        } 
+        .navbar-brand li ul{
+        display: none;
+        height: auto;									
+        margin: 0; 
+        padding: 0; 
+        }				
+        .navbar-brand li:hover ul{
+        display: block;
+        }
+        .navbar-brand li ul li {
+        background-color: #444444;
+        } 
+        .navbar-brand li ul li a{
+        border-left: 1px solid #444444; 
+        border-right: 1px solid #444444; 
+        border-top: 1px solid #c9d4d8; 
+        border-bottom: 1px solid #444444; 
+        }
+        .navbar-brand li ul li a:hover{
+        background-color: #a3a1a1;
+        }
+  
+ 

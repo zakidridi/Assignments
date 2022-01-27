@@ -1,0 +1,58 @@
+
+  <nav class="navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <!-- <a class="navbar-brand" href="#">Gestion Assignments</a>-->
+    <!-- Links -->
+    <ul class="navbar-brand">
+      <li class="nav-item" id="home">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()"  >LOGOUT</a>
+      </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Assignments
+        </a>
+        <ul class="dropdown-menu">
+         <li> <a class="dropdown-item" routerLink="/add-assignment">Ajouter</a> </li>
+         <li> <a class="dropdown-item" href="#">Lister</a> </li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Devoires
+        </a>
+        <ul class="dropdown-menu">
+         <li> <a class="dropdown-item" routerLink="add-devoir">Ajouter</a> </li>
+         <li> <a class="dropdown-item" href="#">Lister</a> </li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Matieres
+        </a>
+        <ul class="dropdown-menu">
+         <li> <a class="dropdown-item" routerLink="add-matiere">Ajouter</a> </li> 
+         <li> <a class="dropdown-item" routerLink="assignmentHome">Lister</a> </li>
+        </ul>
+      </li>
+    </ul>
+   
+  </nav>
+
+
+  <nav>
+    <a routerLink="/home">
+      <h1>{{titre}}</h1>
+    </a>
+  </nav>
+  <mat-slide-toggle color="primary" (click)="login()">Connexion en tant qu'admin</mat-slide-toggle>
+  
+  <!--
+  <app-assignments></app-assignments>
+  -->
+  <router-outlet></router-outlet>
