@@ -11,6 +11,7 @@ import { Assignment } from '../assignment.model';
 export class EditAssignmentComponent implements OnInit {
   assignment!: Assignment | undefined;
   nomAssignment?: string;
+  matiereAssignment?: number;
   dateDeRendu?: Date;
 
   constructor(
@@ -41,6 +42,7 @@ export class EditAssignmentComponent implements OnInit {
         this.assignment = assignment;
 
         this.nomAssignment = assignment?.nom;
+        this.matiereAssignment=assignment?._matiere;
         this.dateDeRendu = assignment?.dateDeRendu;
       });
   }
@@ -54,6 +56,9 @@ export class EditAssignmentComponent implements OnInit {
 
     if (this.dateDeRendu) {
       this.assignment.dateDeRendu = this.dateDeRendu;
+    }
+    if (this.matiereAssignment) {
+      this.assignment._matiere = this.matiereAssignment;
     }
     this.assignmentsService
       .updateAssignment(this.assignment)

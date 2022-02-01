@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, forkJoin, map, Observable, of, tap } from 'rxjs';
 import { Assignment } from '../assignments/assignment.model';
 import { LoggingService } from './logging.service';
-import { bdInitialAssignments } from './data';
+import { bdInitialAssignments } from './data_a';
 
 @Injectable({
   providedIn: 'root'
@@ -101,6 +101,10 @@ export class AssignmentsService {
         nouvelAssignment.id = a.id;
         nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
         nouvelAssignment.rendu = a.rendu;
+        nouvelAssignment._auteur = a._auteur;
+        nouvelAssignment._matiere = a._matiere;
+        nouvelAssignment.note = a.note;
+        nouvelAssignment.remarque = a.remarque;
 
         this.addAssignment(nouvelAssignment)
         .subscribe(reponse => {
@@ -120,6 +124,10 @@ export class AssignmentsService {
         nouvelAssignment.nom = a.nom;
         nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
         nouvelAssignment.rendu = a.rendu;
+        nouvelAssignment._auteur = a._auteur;
+        nouvelAssignment._matiere = a._matiere;
+        nouvelAssignment.note = a.note;
+        nouvelAssignment.remarque = a.remarque;
 
         appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment));
       });

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Matiere } from '../matieres/matiere.model';
+import { Prof } from '../profs/prof.model';
 import { AssignmentsService } from '../shared/assignments.service';
+import { MatieresService } from '../shared/matieres.service';
+import { ProfsService } from '../shared/profs.service';
 import { Assignment } from './assignment.model';
 
 @Component({
@@ -14,6 +18,8 @@ export class AssignmentsComponent implements OnInit {
 
   assignmentSelectionne?: Assignment;
   assignments: Assignment[] = [];
+  matieres:Matiere[]=[]
+  profs:Prof[]=[]
 
   // proprietes de pagination
   page: number = 1;
@@ -24,26 +30,61 @@ export class AssignmentsComponent implements OnInit {
   prevPage!: number;
   hasNextPage?: boolean;
   nextPage!: number;
+  matiereTransmis?: Matiere;
 
   constructor(
     private assignmentsService: AssignmentsService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private route: ActivatedRoute,
+  private MatieresService:MatieresService,private ProfsService:ProfsService,private matieresService:MatieresService) {}
 
   ngOnInit(): void {
     // appelé juste avant l'affichage
     // On utilise le service pour récupérer le tableau
     // des assignments
     this.getAssignments(this.page, this.limit);
-
+    this.getMatieres(this.page,this.limit)
+    this.getProfs(this.page, this.limit)
     console.log('APPEL à getAssignments terminé');
   }
-
+  
+  getMatieres(page:number, limit:number) {
+    this.MatieresService
+      .getMatieresPagine(page, limit)
+      .subscribe((data) => {
+        this.matieres = data.docs; // les assignments
+        this.page = data.page;
+        this.limit = data.limit;
+        this.totalDocs = data.totalDocs;
+        this.totalPages = data.totalPages;
+        this.hasPrevPage = data.hasPrevPage;
+        this.prevPage = data.prevPage;
+        this.hasNextPage = data.hasNextPage;
+        this.nextPage = data.nextPage;
+        console.log('données reçues');
+      });
+  }
   getAssignments(page:number, limit:number) {
     this.assignmentsService
       .getAssignmentsPagine(page, limit)
       .subscribe((data) => {
         this.assignments = data.docs; // les assignments
+        this.page = data.page;
+        this.limit = data.limit;
+        this.totalDocs = data.totalDocs;
+        this.totalPages = data.totalPages;
+        this.hasPrevPage = data.hasPrevPage;
+        this.prevPage = data.prevPage;
+        this.hasNextPage = data.hasNextPage;
+        this.nextPage = data.nextPage;
+        console.log('données reçues');
+      });
+  }
+  getProfs(page:number, limit:number) {
+    this.ProfsService
+      .getProfsPagine(page, limit)
+      .subscribe((data) => {
+        this.profs = data.docs; // les assignments
         this.page = data.page;
         this.limit = data.limit;
         this.totalDocs = data.totalDocs;
@@ -63,7 +104,7 @@ export class AssignmentsComponent implements OnInit {
     this.assignmentSelectionne = assignment;
     console.log('assignment clique = ' + assignment.nom);
   }
-
+ 
   /*
   onNouvelAssignment(assignment:Assignment) {
     // assignment envoyé par le composant add-assignment
